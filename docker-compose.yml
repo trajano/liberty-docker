@@ -1,5 +1,6 @@
 version: "3"
 services:
+<<<<<<< HEAD
   controller:
     build: wlp-controller
     ports: 
@@ -8,6 +9,7 @@ services:
     build: wlp-member
     depends_on:
     - controller
+    - database
   webserver:
     build: webserver
     ports: 
@@ -15,3 +17,15 @@ services:
     - "443:443"
     depends_on:
     - controller
+  database:
+    image: mariadb:10.1
+    volumes:
+    - 'mariadb_data:/var/lib/mysql'
+    environment:
+      MYSQL_DATABASE: "jeesample"
+      MYSQL_USER: "jeeuser"
+      MYSQL_PASSWORD: "password"
+      MYSQL_RANDOM_ROOT_PASSWORD: "true"
+volumes:
+  mariadb_data:
+    driver: local
