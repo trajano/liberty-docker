@@ -4,3 +4,7 @@ services:
     build: wlp-controller
     ports: 
     - "9443:9443"
+  member:
+    build: wlp-member
+    depends_on:
+    - controller
