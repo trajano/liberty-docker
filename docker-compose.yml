@@ -9,6 +9,13 @@ services:
     depends_on:
     - database
     - controller
+  webserver:
+    build: webserver
+    ports: 
+    - "80:80"
+    - "443:443"
+    depends_on:
+    - controller
   database:
     image: mariadb:10.1
     volumes:

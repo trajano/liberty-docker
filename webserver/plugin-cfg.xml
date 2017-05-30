@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!--HTTP server plugin config file for webserver1 generated on 2017.05.30 at 19:07:12 UTC-->
+<Config ASDisableNagle="false" AcceptAllContent="false" AppServerPortPreference="HostHeader" ChunkedResponse="false" FIPSEnable="false" IISDisableNagle="false" IISPluginPriority="High" IgnoreDNSFailures="false" RefreshInterval="60" ResponseChunkSize="64" SSLConsolidate="false" TrustedProxyEnable="false" VHostMatchingCompat="false">
+   <Log LogLevel="Error" Name="/opt/IBM/HTTPServer/logs/http_plugin.log"/>
+   <Property Name="ESIEnable" Value="true"/>
+   <Property Name="ESIMaxCacheSize" Value="1024"/>
+   <Property Name="ESIInvalidationMonitor" Value="false"/>
+   <Property Name="ESIEnableToPassCookies" Value="false"/>
+   <Property Name="PluginInstallRoot" Value="/opt/IBM/WebSphere/Plugins/"/>
+   <Property Name="Keyfile" Value="/plugin-key.kdb"/>
+   <Property Name="Stashfile" Value="/plugin-key.sth"/>
+   <IntelligentManagement>
+      <Property name="webserverName" value="webserver1"/>
+      <ConnectorCluster enabled="true" maxRetries="-1" name="defaultCollective" retryInterval="60">
+         <Property name="uri" value="/ibm/api/dynamicRouting"/>
+         <Connector host="controller" port="9443" protocol="https">
+            <Property name="keyring" value="/plugin-key.kdb"/>
+         </Connector>
+      </ConnectorCluster>
+   </IntelligentManagement>
+</Config>
