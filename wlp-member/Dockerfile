@@ -19,11 +19,14 @@ EXPOSE 9080 9443
 RUN server create
 
 # Install features needed for the collective controller
-RUN installUtility install collectiveMember-1.0 javaee-7.0 --acceptLicense
+RUN installUtility install collectiveMember-1.0 clusterMember-1.0 javaee-7.0 --acceptLicense
 
 # Copy support files
 COPY server.xml /wlp/usr/servers/defaultServer
 COPY wlp-member.sh /
+
+# Copy the application
+COPY hello-world.war /wlp/usr/servers/defaultServer/dropins
 
 RUN chmod 700 /wlp-member.sh
 
