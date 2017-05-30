@@ -4,6 +4,11 @@ services:
     build: wlp-controller
     ports: 
     - "9443:9443"
+  member:
+    build: wlp-member
+    depends_on:
+    - database
+    - controller
   database:
     image: mariadb:10.1
     volumes:
